@@ -1,4 +1,5 @@
 import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 import { type GlobOptionsWithFileTypesTrue, glob } from "glob";
 import { Plugin } from "gramio";
 import { getPath } from "utils";
@@ -24,7 +25,7 @@ export async function autoload(options?: AutoloadOptions) {
 	for await (const path of paths) {
 		const fullPath = join(directoryPath, path);
 
-		const file = await import(fullPath);
+		const file = await import(String(pathToFileURL(fullPath)));
 		if (!file.default) throw new Error(`${path} don't provide export default`);
 
 		plugin.group(file.default);
