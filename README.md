@@ -4,6 +4,8 @@ Autoload commands plugin for GramIO.
 
 ## Usage
 
+> [full example](https://github.com/gramiojs/autoload/example)
+
 ## Register the plugin
 
 ```ts

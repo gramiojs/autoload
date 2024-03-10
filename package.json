@@ -12,7 +12,11 @@
     "keywords": [
         "gramio",
         "gramio-plugin",
-        "autoload"
+        "telegram",
+        "autoload",
+        "nextjs",
+        "filerouter",
+        "commander"
     ],
     "devDependencies": {
         "@types/bun": "^1.0.7",
