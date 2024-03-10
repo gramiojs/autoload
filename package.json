@@ -1,0 +1,31 @@
+{
+    "name": "@gramio/autoload",
+    "version": "0.0.1",
+    "description": "Autoload commands plugin for GramIO",
+    "main": "dist/index.js",
+    "type": "commonjs",
+    "homepage": "https://github.com/gramiojs/autoload",
+    "readme": "https://gramio.netlify.app/",
+    "scripts": {
+        "prepublishOnly": "tsc && bunx tsc-alias"
+    },
+    "keywords": [
+        "gramio",
+        "gramio-plugin",
+        "autoload"
+    ],
+    "devDependencies": {
+        "@types/bun": "^1.0.7",
+        "gramio": "^0.0.22",
+        "typescript": "^5.3.3"
+    },
+    "peerDependencies": {
+        "gramio": "^0.0.22"
+    },
+    "files": [
+        "dist"
+    ],
+    "dependencies": {
+        "glob": "^10.3.10"
+    }
+}
