@@ -4,7 +4,7 @@ Autoload commands plugin for GramIO.
 
 ## Usage
 
-> [full example](https://github.com/gramiojs/autoload/example)
+> [full example](https://github.com/gramiojs/autoload/tree/main/example)
 
 ## Register the plugin
 
