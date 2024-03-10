@@ -8,6 +8,8 @@ export interface AutoloadOptions
 	extends Omit<GlobOptionsWithFileTypesTrue, "cwd" | "withFileTypes"> {
 	pattern?: string;
 	path?: string;
+	onLoad?: (params: { absolute: string; relative: string }) => unknown;
+	onFinish?: (paths: { absolute: string; relative: string }[]) => unknown;
 }
 
 export async function autoload(options?: AutoloadOptions) {
@@ -23,13 +25,22 @@ export async function autoload(options?: AutoloadOptions) {
 	});
 
 	for await (const path of paths) {
-		const fullPath = join(directoryPath, path);
+		const absolute = String(pathToFileURL(join(directoryPath, path)));
+		if (options?.onLoad) options.onLoad({ absolute, relative: path });
 
-		const file = await import(String(pathToFileURL(fullPath)));
+		const file = await import(absolute);
 		if (!file.default) throw new Error(`${path} don't provide export default`);
 
 		plugin.group(file.default);
 	}
+
+	if (options?.onFinish)
+		options.onFinish(
+			paths.map((path) => ({
+				absolute: String(pathToFileURL(join(directoryPath, path))),
+				relative: path,
+			})),
+		);
 
 	return plugin;
 }

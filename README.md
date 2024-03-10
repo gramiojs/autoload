@@ -34,9 +34,11 @@ export default (bot: BotType) =>
 
 ## Options
 
-| Key      | Type   | Default                    | Description                                                         |
-| -------- | ------ | -------------------------- | ------------------------------------------------------------------- |
-| pattern? | string | "\*\*\/\*.{ts,js,cjs,mjs}" | [Glob patterns](<https://en.wikipedia.org/wiki/Glob_(programming)>) |
-| path?    | string | "./commands"               | the path to the folder                                              |
+| Key       | Type                                                          | Default                    | Description                                                         |
+| --------- | ------------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------- |
+| pattern?  | string                                                        | "\*\*\/\*.{ts,js,cjs,mjs}" | [Glob patterns](<https://en.wikipedia.org/wiki/Glob_(programming)>) |
+| path?     | string                                                        | "./commands"               | the path to the folder                                              |
+| onLoad?   | (params: { absolute: string; relative: string }) => unknown   |                            | the hook that is called when loading a file                         |
+| onFinish? | (paths: { absolute: string; relative: string }[]) => unknown; |                            | the hook that is called after loading all files                     |
 
 and other [glob package options](https://www.npmjs.com/package/glob#options)
