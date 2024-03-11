@@ -4,12 +4,17 @@ import { type GlobOptionsWithFileTypesTrue, glob } from "glob";
 import { Plugin } from "gramio";
 import { getPath } from "utils";
 
+export interface AutoloadOptionsPathParams {
+	absolute: string;
+	relative: string;
+}
+
 export interface AutoloadOptions
 	extends Omit<GlobOptionsWithFileTypesTrue, "cwd" | "withFileTypes"> {
 	pattern?: string;
 	path?: string;
-	onLoad?: (params: { absolute: string; relative: string }) => unknown;
-	onFinish?: (paths: { absolute: string; relative: string }[]) => unknown;
+	onLoad?: (path: AutoloadOptionsPathParams) => unknown;
+	onFinish?: (paths: AutoloadOptionsPathParams[]) => unknown;
 }
 
 export async function autoload(options?: AutoloadOptions) {
