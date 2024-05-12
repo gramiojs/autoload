@@ -1,10 +1,17 @@
 # @gramio/autoload
 
+[![npm](https://img.shields.io/npm/v/@gramio/autoload?logo=npm&style=flat&labelColor=000&color=3b82f6)](https://www.npmjs.org/package/@gramio/autoload)
+[![JSR](https://jsr.io/badges/@gramio/autoload)](https://jsr.io/@gramio/autoload)
+[![JSR Score](https://jsr.io/badges/@gramio/autoload/score)](https://jsr.io/@gramio/autoload)
+
 Autoload commands plugin for GramIO.
 
 ## Usage
 
 > [full example](https://github.com/gramiojs/autoload/tree/main/example)
+
+> [!IMPORTANT]
+> Please read about [Lazy-load plugins](https://gramio.netlify.app/plugins/official/autoload.html)
 
 ## Register the plugin
 
