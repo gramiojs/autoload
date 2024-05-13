@@ -1,6 +1,6 @@
 {
     "name": "@gramio/autoload",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Autoload commands plugin for GramIO",
     "main": "dist/index.js",
     "type": "commonjs",
