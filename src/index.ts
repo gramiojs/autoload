@@ -59,16 +59,19 @@ export interface AutoloadOptions
  * ```
  */
 export async function autoload(options?: AutoloadOptions): Promise<Plugin> {
+	const fileSources = {};
 	const pattern = options?.pattern ?? "**/*.{ts,js,cjs,mjs}";
 	const path = options?.path ?? "./commands";
 	const directoryPath = getPath(path);
 
 	const plugin = new Plugin("@gramio/autoload");
 
+	// esbuild-plugin-autoload glob-start
 	const paths = await glob(pattern, {
 		cwd: directoryPath,
 		...options,
 	});
+	// esbuild-plugin-autoload glob-end
 
 	for await (const path of paths) {
 		const absolute = String(pathToFileURL(join(directoryPath, path)));
