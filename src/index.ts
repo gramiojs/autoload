@@ -1,7 +1,8 @@
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { type GlobOptionsWithFileTypesTrue, glob } from "glob";
+import { type Options, fdir } from "fdir";
 import { Plugin } from "gramio";
+import type { PicomatchOptions } from "picomatch";
 import { getPath } from "./utils";
 
 /** Params that used in {@link AutoloadOptions.onLoad | onLoad} and {@link AutoloadOptions.onFinish | onFinish} hooks */
@@ -10,14 +11,18 @@ export interface AutoloadOptionsPathParams {
 	relative: string;
 }
 
-/** Options for {@link autoload} plugin extended by {@link GlobOptionsWithFileTypesTrue} */
-export interface AutoloadOptions
-	extends Omit<GlobOptionsWithFileTypesTrue, "cwd" | "withFileTypes"> {
+/** Options for {@link autoload} plugin with options for {@link Options | fdir} and  {@link PicomatchOptions | picomatch}*/
+export interface AutoloadOptions {
+	/** Configure `fdir` options */
+	fdir?: Options;
+	/** Configure `picomatch` options */
+	picomatch?: PicomatchOptions;
 	/**
 	 * [Glob patterns](<https://en.wikipedia.org/wiki/Glob_(programming)>)
 	 * @default "**\/*.{ts,js,cjs,mjs}"
 	 * */
-	pattern?: string;
+	patterns?: string | string[];
+
 	/**
 	 * The path to the folder
 	 * @default "./commands"
@@ -60,17 +65,21 @@ export interface AutoloadOptions
  */
 export async function autoload(options?: AutoloadOptions): Promise<Plugin> {
 	const fileSources = {};
-	const pattern = options?.pattern ?? "**/*.{ts,js,cjs,mjs}";
+
+	const patterns =
+		typeof options?.patterns === "string"
+			? [options?.patterns]
+			: options?.patterns ?? ["**/*.{ts,js,cjs,mjs}"];
 	const path = options?.path ?? "./commands";
 	const directoryPath = getPath(path);
 
 	const plugin = new Plugin("@gramio/autoload");
 
 	// esbuild-plugin-autoload glob-start
-	const paths = await glob(pattern, {
-		cwd: directoryPath,
-		...options,
-	});
+	const paths = await new fdir(options?.fdir || {})
+		.globWithOptions(patterns, options?.picomatch || {})
+		.crawl(directoryPath)
+		.withPromise();
 	// esbuild-plugin-autoload glob-end
 
 	for await (const path of paths) {
