@@ -1,3 +1,8 @@
+/**
+ * @module
+ *
+ * Autoload commands plugin for GramIO with [`Bun.build`](#bun-build-usage) support.
+ */
 import path from "node:path";
 import url from "node:url";
 import { type Options, fdir } from "fdir";
