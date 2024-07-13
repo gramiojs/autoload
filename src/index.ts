@@ -83,7 +83,7 @@ export interface AutoloadOptions {
  *     bot.command("start", (context) => context.send("hello!"));
  * ```
  */
-export async function autoload(options?: AutoloadOptions) {
+export async function autoload(options?: AutoloadOptions): Promise<Plugin> {
 	const failGlob = options?.failGlob ?? true;
 	const patterns =
 		typeof options?.patterns === "string"

@@ -1,9 +1,14 @@
 {
     "name": "@gramio/autoload",
-    "version": "0.0.3",
+    "version": "1.0.0",
     "exports": "./src/index.ts",
     "publish": {
-        "include": ["deno.json", "src", "README.md", "tsconfig.json"]
+        "include": [
+            "deno.json",
+            "src",
+            "README.md",
+            "tsconfig.json"
+        ]
     },
     "imports": {
         "fdir": "npm:fdir@^6.1.1",
