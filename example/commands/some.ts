@@ -1,4 +1,4 @@
 import type { BotType } from "..";
 
-export default (bot: BotType) =>
+export const beta = (bot: BotType) =>
 	bot.command("start", (context) => context.send("hello!"));
