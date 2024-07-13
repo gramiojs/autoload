@@ -27,7 +27,7 @@ jobs:
               run: bun install
 
             - name: Prepare to JSR publish
-              run: bun jsr
+              run: bun scripts/release-jsr.ts
 
             - name: Type-check
               run: tsc --noEmit
@@ -41,7 +41,6 @@ jobs:
             - name: Install Node
               uses: actions/setup-node@v4
               with:
-                  node-version: "20.x"
                   registry-url: "https://registry.npmjs.org"
                   scope: "@gramio"
 
