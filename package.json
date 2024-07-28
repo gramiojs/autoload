@@ -42,6 +42,7 @@
 		"gramio": ">=0.0.39 < 1.0.0"
 	},
 	"files": ["dist"],
+	"license": "MIT",
 	"dependencies": {
 		"fdir": "^6.1.1",
 		"picomatch": "^4.0.2",
