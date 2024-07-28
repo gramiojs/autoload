@@ -1,53 +1,50 @@
 {
-    "name": "@gramio/autoload",
-    "version": "1.0.0",
-    "description": "Autoload commands plugin for GramIO",
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
-    "exports": {
-        ".": {
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/index.js"
-            },
-            "require": {
-                "types": "./dist/index.d.cts",
-                "default": "./dist/index.cjs"
-            }
-        }
-    },
-    "type": "module",
-    "homepage": "https://github.com/gramiojs/autoload",
-    "readme": "https://gramio.dev/plugins/official/autoload.html",
-    "scripts": {
-        "prepublishOnly": "bunx pkgroll",
-        "jsr": "bun scripts/release-jsr.ts"
-    },
-    "keywords": [
-        "gramio",
-        "gramio-plugin",
-        "telegram",
-        "autoload",
-        "nextjs",
-        "filerouter",
-        "commander"
-    ],
-    "devDependencies": {
-        "@types/bun": "^1.1.6",
-        "gramio": "^0.0.39",
-        "pkgroll": "^2.1.1",
-        "typescript": "^5.5.3"
-    },
-    "peerDependencies": {
-        "gramio": "^0.0.39"
-    },
-    "files": [
-        "dist"
-    ],
-    "dependencies": {
-        "fdir": "^6.1.1",
-        "picomatch": "^4.0.2",
-        "@types/picomatch": "^3.0.0"
-    }
+	"name": "@gramio/autoload",
+	"version": "1.0.1",
+	"description": "Autoload commands plugin for GramIO",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"type": "module",
+	"homepage": "https://github.com/gramiojs/autoload",
+	"readme": "https://gramio.dev/plugins/official/autoload.html",
+	"scripts": {
+		"prepublishOnly": "bunx pkgroll"
+	},
+	"keywords": [
+		"gramio",
+		"gramio-plugin",
+		"telegram",
+		"autoload",
+		"nextjs",
+		"filerouter",
+		"commander"
+	],
+	"devDependencies": {
+		"@types/bun": "^1.1.6",
+		"gramio": "^0.0.39",
+		"pkgroll": "^2.1.1",
+		"typescript": "^5.5.3"
+	},
+	"peerDependencies": {
+		"gramio": ">=0.0.39 < 1.0.0"
+	},
+	"files": ["dist"],
+	"dependencies": {
+		"fdir": "^6.1.1",
+		"picomatch": "^4.0.2",
+		"@types/picomatch": "^3.0.0"
+	}
 }
