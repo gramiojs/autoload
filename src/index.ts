@@ -22,9 +22,8 @@ export interface AutoloadOptions {
 	fdir?: Options;
 	/** Configure `picomatch` options */
 	picomatch?: PicomatchOptions;
-
 	/**
-	 * import a specific `import` from a file
+	 * import a specific `export` from a file
 	 * @example import first export
 	 * ```ts
 	 * import: (file) => Object.keys(file).at(0) || "default",
@@ -43,6 +42,11 @@ export interface AutoloadOptions {
 	 * @default true
 	 */
 	failGlob?: boolean;
+	/**
+	 * Skip imports where needed `export` not defined
+	 * @default false
+	 */
+	skipImportErrors?: boolean;
 	/**
 	 * The path to the folder
 	 * @default "./commands"
@@ -96,6 +100,7 @@ export async function autoload(options?: AutoloadOptions): Promise<Plugin> {
 	const plugin = new Plugin("@gramio/autoload");
 
 	const paths = await new fdir(options?.fdir || {})
+
 		.globWithOptions(patterns, options?.picomatch || {})
 		.crawl(directoryPath)
 		.withPromise();
@@ -115,6 +120,8 @@ export async function autoload(options?: AutoloadOptions): Promise<Plugin> {
 
 		const importName =
 			typeof getImportName === "string" ? getImportName : getImportName(file);
+
+		if (!file[importName] && options?.skipImportErrors) continue;
 
 		if (!file[importName])
 			throw new Error(`${filePath} don't provide export ${importName}`);
