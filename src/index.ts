@@ -100,7 +100,7 @@ export async function autoload(options?: AutoloadOptions): Promise<Plugin> {
 	const plugin = new Plugin("@gramio/autoload");
 
 	const paths = await new fdir(options?.fdir || {})
-
+		.withRelativePaths()
 		.globWithOptions(patterns, options?.picomatch || {})
 		.crawl(directoryPath)
 		.withPromise();
