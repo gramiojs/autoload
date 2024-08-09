@@ -9,6 +9,6 @@
 		"fdir": "npm:fdir@^6.1.1",
 		"picomatch": "npm:picomatch@^4.0.2",
 		"@types/picomatch": "npm:@types/picomatch@^3.0.0",
-		"gramio": "jsr:@gramio/core@>=0.0.39 < 1.0.0"
+		"gramio": "jsr:@gramio/core@^0.0.39"
 	}
 }
