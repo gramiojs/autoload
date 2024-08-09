@@ -6,9 +6,9 @@
 		"include": ["deno.json", "src", "README.md", "tsconfig.json", "LICENSE"]
 	},
 	"imports": {
-		"fdir": "npm:fdir@^6.1.1",
+		"fdir": "npm:fdir@^6.2.0",
 		"picomatch": "npm:picomatch@^4.0.2",
-		"@types/picomatch": "npm:@types/picomatch@^3.0.0",
+		"@types/picomatch": "npm:@types/picomatch@^3.0.1",
 		"gramio": "jsr:@gramio/core@^0.0.39"
 	}
 }
