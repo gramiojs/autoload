@@ -102,7 +102,7 @@ export async function autoload(options?: AutoloadOptions): Promise<Plugin> {
 
 	if (failGlob && paths.length === 0)
 		throw new Error(
-			"No matches found. You can disable this error by setting the failGlob parameter to false in the options of autoload plugin",
+			`No matches found in ${directoryPath}. You can disable this error by setting the failGlob parameter to false in the options of autoload plugin`,
 		);
 
 	for await (const filePath of paths) {

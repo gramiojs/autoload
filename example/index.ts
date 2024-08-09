@@ -1,9 +1,9 @@
 import { Bot } from "gramio";
-import { autoload } from "../src";
+import { autoload } from "../dist";
 
 const bot = new Bot(process.env.TOKEN as string)
 	.extend(
-		autoload({
+		await autoload({
 			import: (file) => Object.keys(file).at(0) || "default",
 		}),
 	)

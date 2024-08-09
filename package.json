@@ -35,8 +35,8 @@
 	"devDependencies": {
 		"@types/bun": "^1.1.6",
 		"gramio": "^0.0.39",
-		"pkgroll": "^2.1.1",
-		"typescript": "^5.5.3"
+		"pkgroll": "2.4.2",
+		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
 		"gramio": ">=0.0.39 < 1.0.0"
@@ -44,7 +44,7 @@
 	"files": ["dist"],
 	"license": "MIT",
 	"dependencies": {
-		"fdir": "^6.1.1",
+		"fdir": "^6.2.0",
 		"picomatch": "^4.0.2",
 		"@types/picomatch": "^3.0.0"
 	}
