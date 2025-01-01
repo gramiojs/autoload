@@ -34,7 +34,9 @@
   ],
   "devDependencies": {
     "@types/bun": "^1.1.6",
+    "@types/node": "^22.10.3",
     "gramio": "^0.0.39",
+    "mitata": "^1.0.25",
     "pkgroll": "2.4.2",
     "typescript": "^5.5.4"
   },
